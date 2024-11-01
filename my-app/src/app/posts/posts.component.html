@@ -1,9 +1,9 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<h3>Tabla de JSON Place Holder</h3>
 
-    
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- userId Column -->
     <ng-container matColumnDef="userId">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <th mat-header-cell *matHeaderCellDef> UserId </th>
       <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
     </ng-container>
   
@@ -28,14 +28,22 @@
     <ng-container matColumnDef="detail">
         <th mat-header-cell *matHeaderCellDef> Detail </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-button color="primary">Detail</button>
+          <button mat-button color="primary">Detalle</button>
         </td>
       </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <div style="position: absolute; top: 650%; left: 255%;">
+    <app-pagination 
+    [currentPage]="currentPage" 
+    [totalPosts]="totalPosts"
+    [itemsPerPage]="itemsPerPage"
+    (pageChange)="OnPageChange($event)">
+  </app-pagination>
+  </div>
   
   
-<app-post-detail></app-post-detail>
-<app-pagination></app-pagination>
+<!--<app-post-detail></app-post-detail>
+-->

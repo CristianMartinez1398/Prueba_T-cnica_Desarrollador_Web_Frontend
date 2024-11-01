@@ -33,6 +33,8 @@ export class PostsService {
     .pipe(catchError(this.handleError))
   }
 
+  
+
   private handleError(error: HttpErrorResponse){
     return throwError(() => new Error('Error al obtener los datos.'))
   }

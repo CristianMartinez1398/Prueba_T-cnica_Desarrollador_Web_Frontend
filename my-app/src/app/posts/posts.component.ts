@@ -22,6 +22,9 @@ export interface PeriodicElement {
 export class PostsComponent implements OnInit {
   displayedColumns: string[] = ['userId', 'id', 'title', 'body', 'detail'];
   dataSource: PeriodicElement[] = [];
+  currentPage = 1;
+  itemsPerPage = 5;
+  totalPosts = 100;
 
   constructor(private postsService: PostsService){}
 
@@ -30,7 +33,7 @@ export class PostsComponent implements OnInit {
   }
 
   loadPosts(): void{
-    this.postsService.getPosts(1, 5).subscribe(
+    this.postsService.getPosts(this.currentPage, this.itemsPerPage).subscribe(
       (data) => {
         this.dataSource = data;
       },
@@ -39,4 +42,11 @@ export class PostsComponent implements OnInit {
       }
     );
   }
+
+  OnPageChange(newPage: number){
+    this.currentPage = newPage;
+    this.loadPosts();
+  }
+
+
 }
