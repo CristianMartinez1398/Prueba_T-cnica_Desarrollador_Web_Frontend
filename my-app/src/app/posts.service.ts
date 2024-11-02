@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import { catchError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import {Post, Comment} from './post-detail/post.model';
 
 
@@ -38,6 +38,6 @@ export class PostsService {
   }
 
   private handleError(error: HttpErrorResponse){
-    return throwError(() => new Error('Error al obtener los datos.'));
+    return throwError(() => new Error('Error .'));
   }
 }

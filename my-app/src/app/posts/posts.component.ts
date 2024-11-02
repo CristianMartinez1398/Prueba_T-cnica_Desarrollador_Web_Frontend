@@ -51,6 +51,7 @@ export class PostsComponent implements OnInit {
   }
 
   viewDetails(postId: number){
+    console.log("ID del post:", postId)
     this.router.navigate(['/postdetail', postId]);
   }
 
