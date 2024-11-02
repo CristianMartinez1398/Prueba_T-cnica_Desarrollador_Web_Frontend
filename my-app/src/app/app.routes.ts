@@ -6,6 +6,6 @@ import { PaginationComponent } from './shared/pagination/pagination.component'
 
 export const routes: Routes = [
     {path:'posts', component: PostsComponent},
-    {path:'postdetail', component: PostDetailComponent},
-    {path:'pagination', component: PaginationComponent},
+    {path:'postdetail/: id', component: PostDetailComponent},
+    
 ];

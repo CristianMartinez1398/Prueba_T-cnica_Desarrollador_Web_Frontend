@@ -2,13 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import { catchError } from 'rxjs';
+import {Post, Comment} from './post-detail/post.model';
 
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +12,7 @@ interface Post {
 export class PostsService {
 
   private API_URL = 'https://jsonplaceholder.typicode.com/posts';
+  private API_COMMENT_URL = 'https://jsonplaceholder.typicode.com/comments';
 
   constructor(private http: HttpClient) { }
 
@@ -33,9 +30,14 @@ export class PostsService {
     .pipe(catchError(this.handleError))
   }
 
-  
+  //Obtener comentarios por ID de post
+  getCommentByPostId(postId: number): Observable<Comment[]>{
+    return this.http
+    .get<Comment[]>(`${this.API_COMMENT_URL}?postId=${postId}`)
+    .pipe(catchError(this.handleError))
+  }
 
   private handleError(error: HttpErrorResponse){
-    return throwError(() => new Error('Error al obtener los datos.'))
+    return throwError(() => new Error('Error al obtener los datos.'));
   }
 }

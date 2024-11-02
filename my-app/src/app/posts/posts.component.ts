@@ -3,7 +3,7 @@ import { PostDetailComponent } from "../post-detail/post-detail.component";
 import { PaginationComponent } from "../shared/pagination/pagination.component";
 import {MatTableModule} from '@angular/material/table';
 import { PostsService } from '../posts.service';
-
+import { Router } from '@angular/router';
 
 export interface PeriodicElement {
   userId: number;
@@ -25,10 +25,11 @@ export class PostsComponent implements OnInit {
   currentPage = 1;
   itemsPerPage = 5;
   totalPosts = 100;
+  
 
-  constructor(private postsService: PostsService){}
+  constructor(private postsService: PostsService, private router: Router){}
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.loadPosts();
   }
 
@@ -36,6 +37,7 @@ export class PostsComponent implements OnInit {
     this.postsService.getPosts(this.currentPage, this.itemsPerPage).subscribe(
       (data) => {
         this.dataSource = data;
+        console.log("datos obtenidos:", data)
       },
       (error) => {
         console.error('Error al obtener los datos:', error);
@@ -48,5 +50,8 @@ export class PostsComponent implements OnInit {
     this.loadPosts();
   }
 
+  viewDetails(postId: number){
+    this.router.navigate(['/postdetail', postId]);
+  }
 
 }
