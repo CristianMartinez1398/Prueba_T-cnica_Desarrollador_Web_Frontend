@@ -1,7 +1,8 @@
 table {
   width: 100%;
   position: fixed;
-   
+  top: 12%; 
+  background: rgb(93, 93, 93);
     
   }
 

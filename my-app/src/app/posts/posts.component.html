@@ -1,4 +1,8 @@
-<h3>Tabla de JSON Place Holder</h3>
+<div>
+  <h3 style="margin-top: 8%;">Tabla de JSON Place Holder</h3>
+</div>
+
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     
     <ng-container matColumnDef="userId">
@@ -35,11 +39,9 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <div *ngIf="dataSource.length === 0">
-    <p>No hay datos disponibles.</p>
-  </div>
+  
 
-  <div style="position: absolute; top: 850%; left: 255%;">
+  <div style="position: absolute; top: 650%; left: 300%;">
     <app-pagination 
     [currentPage]="currentPage" 
     [totalPosts]="totalPosts"
@@ -48,18 +50,7 @@
   </app-pagination>
   </div>
 
-  <div *ngIf="post">
-    <h1>{{post.title}}</h1>
-    <p>{{post.body}}</p>
   
-    <h2>Comentarios:</h2>
-    <div *ngFor="let comments of comment">
-      <h3>{{comments.name}}</h3>
-      <p><strong>{{comments.email}}</strong></p>
-      <p>{{comments.body}}</p>
-      <hr>
-    </div>
-  </div>
   
   
 
