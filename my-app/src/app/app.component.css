@@ -1,7 +1,7 @@
   .navbar-color {
-    width: 100vw;               /* Ocupa todo el ancho de la pantalla */
-    height: 50px;               /* Ajusta la altura del navbar */
-    position: absolute;            /* Fija el navbar en la parte superior */
+    width: 100vw;               
+    height: 50px;               
+    position: fixed;           
     top: 0;
     left: 0;
     background-color: #1b02fe;  /* Color de fondo */

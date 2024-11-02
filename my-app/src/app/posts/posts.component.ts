@@ -37,7 +37,7 @@ export class PostsComponent implements OnInit {
     this.postsService.getPosts(this.currentPage, this.itemsPerPage).subscribe(
       (data) => {
         this.dataSource = data;
-        console.log("datos obtenidos:", data)
+        
       },
       (error) => {
         console.error('Error al obtener los datos:', error);
@@ -51,7 +51,7 @@ export class PostsComponent implements OnInit {
   }
 
   viewDetails(postId: number){
-    console.log("ID del post:", postId)
+    
     this.router.navigate(['/postdetail', postId]);
   }
 
