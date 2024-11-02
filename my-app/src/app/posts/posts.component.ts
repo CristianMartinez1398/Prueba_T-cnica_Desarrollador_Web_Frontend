@@ -25,6 +25,7 @@ export class PostsComponent implements OnInit {
   currentPage = 1;
   itemsPerPage = 5;
   totalPosts = 100;
+post: any;
   
 
   constructor(private postsService: PostsService, private router: Router){}
@@ -50,9 +51,9 @@ export class PostsComponent implements OnInit {
     this.loadPosts();
   }
 
-  viewDetails(postId: number){
+  viewDetails(postId: number): void{
     
-    this.router.navigate(['/postdetail', postId]);
+    this.router.navigate(['/post-detail', postId]);
   }
 
 }

@@ -24,20 +24,23 @@ export class PostsService {
   }
 
   //Obtener un post por ID
-  getPostsById(Id: number): Observable<Post>{
+  getPostById(id: number): Observable<Post>{
     return this.http
-    .get<Post>(`${this.API_URL}/${Id}`)
-    .pipe(catchError(this.handleError))
+    .get<Post>(`${this.API_URL}/${id}`)
+    .pipe(catchError(this.handleError));
   }
 
   //Obtener comentarios por ID de post
   getCommentByPostId(postId: number): Observable<Comment[]>{
     return this.http
     .get<Comment[]>(`${this.API_COMMENT_URL}?postId=${postId}`)
-    .pipe(catchError(this.handleError))
+    .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse){
-    return throwError(() => new Error('Error .'));
+    const errorMessage = error.status
+    ? `Error ${error.status}: ${error.statusText}`
+    : 'Error desconocido al intentar conectar con la API';
+  return throwError(() => new Error(errorMessage));
   }
 }
