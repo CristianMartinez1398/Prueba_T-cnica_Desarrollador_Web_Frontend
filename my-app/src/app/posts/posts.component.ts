@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostDetailComponent } from "../post-detail/post-detail.component";
 import { PaginationComponent } from "../shared/pagination/pagination.component";
 import {MatTableModule} from '@angular/material/table';
-import { PostsService } from '../posts.service';
+import { PostsService } from '../posts.service/posts.service';
 import { Router } from '@angular/router';
 
 export interface PeriodicElement {
