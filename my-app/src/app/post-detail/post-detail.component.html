@@ -1,13 +1,15 @@
-<div *ngIf="post">
+<nav class="position"></nav>
+
+<div *ngIf="post" class="body">
     <h1>{{post.title}}</h1>
     <p>{{post.body}}</p>
-
+  
     <h2>Comentarios:</h2>
-    <div *ngFor="let comments of comment">
-        <h3>{{comments.name}}</h3>
-        <p><strong>{{comments.email}}</strong></p>
-        <p>{{comments.body}}</p>
-        <hr>
+    <div *ngFor="let comment of comment">
+      <h3>{{comment.name}}</h3>
+      <p><strong>{{comment.email}}</strong></p>
+      <p>{{comment.body}}</p>
+      <hr>
     </div>
-</div>
+  </div>
 

@@ -1,3 +1,8 @@
+:host {
+  position: relative; /* o absolute dependiendo de tu layout */
+  z-index: 1000; /* Un valor alto para asegurarse de que esté por encima */
+}
+  
   .navbar-color {
     width: 100vw;               
     height: 50px;               

@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostsService } from '../posts.service/posts.service';
 import { Post, Comment } from './post.model';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-post-detail',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './post-detail.component.html',
-  styleUrls: ['./post-detail.component.css'] // corregido a "styleUrls" en plural
+  styleUrls: ['./post-detail.component.css']
 })
-export class PostDetailComponent implements OnInit { // implementado OnInit
+export class PostDetailComponent implements OnInit {
   post: Post | null = null;
   comment: Comment[] = [];
   postId!: number;
@@ -22,45 +22,43 @@ export class PostDetailComponent implements OnInit { // implementado OnInit
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const id = params.get('id');
-      
-      console.log('Route params:', params); // Para ver todos los parámetros
-      console.log('Retrieved id:', id); // Para ver el id específico
-      if (id) {
-        this.postId = +id; // Convierte a número
-        console.log('postId after assignment:', this.postId);
-        this.loadPostDetails();
-      } else {
-        console.error('Error: postId is null or undefined');
-      }
+    this.route.paramMap.subscribe({
+      next: (params) => {
+        const id = params.get('id');
+        if (id && Number(id) > 0) {
+          this.postId = parseInt(id, 10);
+          this.loadPostDetails();
+        } else {
+          console.error('Error: postId inválido o ausente');
+        }
+      },
+      error: (error) => console.error('Error en los parámetros de la ruta:', error)
     });
   }
 
   loadPostDetails(): void {
-    if (this.postId > 0) { // Verificación adicional para evitar que postId sea 0
+    if (this.postId > 0) {
       this.postsService.getPostById(this.postId).subscribe({
-        next: (datas) => {
-          this.post = datas;
+        next: (data) => {
+          this.post = data;
           this.loadComments();
         },
         error: (error) => {
-          console.error('Error loading post details:', error);
+          console.error('Error cargando los detalles del post:', error);
         }
       });
-    } else {
-      console.error('Error: postId must be greater than 0');
     }
   }
-
+  
   loadComments(): void {
     this.postsService.getCommentByPostId(this.postId).subscribe({
       next: (data) => {
         this.comment = data;
       },
       error: (error) => {
-        console.error('Error loading comments:', error);
+        console.error('Error cargando los comentarios:', error);
       }
     });
   }
+  
 }

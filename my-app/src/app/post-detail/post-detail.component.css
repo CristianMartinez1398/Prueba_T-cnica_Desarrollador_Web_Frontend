@@ -1,0 +1,19 @@
+.position {
+    width: 100vw;               
+    height: 50px;               
+    position: fixed;           
+    top: 0;
+    left: 0;
+    background-color: #1b02fe;  /* Color de fondo */
+    color: white;
+  }
+
+.body{
+    display: block; /* Asegúrate de que el componente ocupa el espacio completo */
+    position: relative; /* Asegúrate de que esté en el flujo del documento */
+    z-index: 100; /* Asegúrate de que esté por encima de otros elementos */
+    padding: 5%; /* Opcional: agrega un poco de espacio alrededor del contenido */
+    background-color: rgb(255, 255, 255); /* Asegúrate de que el fondo sea visible */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Agrega una sombra para hacer que se destaque */
+    
+}
